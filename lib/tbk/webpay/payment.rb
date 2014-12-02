@@ -104,7 +104,7 @@ module TBK
           response = self.commerce.webpay_decrypt(response.body)[:body]
 
           unless /ERROR=([a-zA-Z0-9]+)/.match(response)[1] == "0"
-            raise TBK::Webpay::PaymentError, "Payment token generation failed"
+            raise TBK::Webpay::PaymentError, "Payment token generation failed 2"
           end
 
           /TOKEN=([a-zA-Z0-9]+)/.match(response)[1]
