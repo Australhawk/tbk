@@ -25,7 +25,9 @@ module TBK
       def transaction_id
         @transaction_id ||= (rand * 10000000000).to_i
       end
-
+      def get_params
+        @parametros ||= ""
+      end
       def redirect_url
         "#{ self.process_url }?TBK_VERSION_KCC=#{ TBK::VERSION::KCC }&TBK_TOKEN=#{ self.token }"
       end
@@ -162,7 +164,7 @@ module TBK
           params << "TBK_URL_FRACASO=#{ self.failure_url || self.success_url }"
           params << "TBK_TIPO_TRANSACCION=TR_NORMAL"
           puts params.join(splitter)
-          parametros = params.join(splitter)
+          @parametros = params.join(splitter)
           
         end
     end
