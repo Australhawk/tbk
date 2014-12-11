@@ -45,6 +45,7 @@ module TBK
         end
 
         def confirmation(confirmation)
+          puts "COMENZANDO CONFIRMACION"
           events_log_file do |file|
             file.write CONFIRMATION_FORMAT % {
               date: now.strftime(LOG_DATE_FORMAT),
@@ -95,7 +96,7 @@ module TBK
           def bitacora_log_file(&block)
             name = BITACORA_LOG_FILE_NAME_FORMAT % now.strftime(BITACORA_LOG_FILE_DATE_FORMAT)
 
-            puts log_file(name, &block)
+            log_file(name, &block)
           end
 
           def log_file(name, mode='a+', &block)

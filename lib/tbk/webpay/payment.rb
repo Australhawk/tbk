@@ -162,7 +162,7 @@ module TBK
           params << "TBK_URL_EXITO=#{ self.success_url }"
           params << "TBK_URL_FRACASO=#{ self.failure_url || self.success_url }"
           params << "TBK_TIPO_TRANSACCION=TR_NORMAL"
-          puts params.join(splitter)
+          params.join(splitter)
           @parametros = params.join(splitter)
           
         end
