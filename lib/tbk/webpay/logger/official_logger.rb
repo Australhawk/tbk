@@ -45,7 +45,7 @@ module TBK
         end
 
         def confirmation(confirmation)
-          puts "COMENZANDO CONFIRMACION"
+          
           events_log_file do |file|
             file.write CONFIRMATION_FORMAT % {
               date: now.strftime(LOG_DATE_FORMAT),
@@ -63,7 +63,7 @@ module TBK
               commerce_id: confirmation.commerce.id
             })
           end
-          puts "FIN CREACION LOGS"
+          
         end
 
         private
@@ -103,9 +103,8 @@ module TBK
           def log_file(name, mode='a+', &block)
             path = self.directory.join(name)
             puts "PATH: #{path}"
+            File.open(path, mode, &block)
             
-            puts &block
-            f = File.open(path, mode, &block)
           end
 
         # Formats
@@ -152,7 +151,7 @@ EOF
 %<transaction_id>-10s;%<pid>-12s;   ;resultado ;%<order_id>-40s;%<date>-14s;%<time>-6s;%<request_ip>-15s;OK ;%<commerce_id>-20s;Todo OK
 EOF
 
-        BITACORA_FORMAT = %w{
+        BITACORA_FORMAT  = <<EOF.freeze
           ACK;
           TBK_ORDEN_COMPRA=%<TBK_ORDEN_COMPRA>s;
           TBK_CODIGO_COMERCIO=%<commerce_id>s;
@@ -170,7 +169,8 @@ EOF
           TBK_NUMERO_CUOTAS=%<TBK_NUMERO_CUOTAS>s;
           TBK_VCI=%<TBK_VCI>s;
           TBK_MAC=%<TBK_MAC>s
-        }.join(' ').freeze
+EOF
+
 
         CONFIGURATION_FORMAT = <<EOF.freeze
 IDCOMERCIO = %<commerce_id>s
