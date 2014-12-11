@@ -95,7 +95,7 @@ module TBK
           def bitacora_log_file(&block)
             name = BITACORA_LOG_FILE_NAME_FORMAT % now.strftime(BITACORA_LOG_FILE_DATE_FORMAT)
 
-            log_file(name, &block)
+            puts log_file(name, &block)
           end
 
           def log_file(name, mode='a+', &block)

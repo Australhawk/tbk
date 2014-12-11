@@ -31,7 +31,6 @@ module TBK
       def redirect_url
         "#{ self.process_url }?TBK_VERSION_KCC=#{ TBK::VERSION::KCC }&TBK_TOKEN=#{ self.token }"
       end
-
       def to_html_form(options = {}, &block)
         form = <<-EOF
           <form method="POST"
