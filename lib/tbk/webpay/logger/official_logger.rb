@@ -63,6 +63,7 @@ module TBK
               commerce_id: confirmation.commerce.id
             })
           end
+          puts "FIN CREACION LOGS"
         end
 
         private
@@ -95,14 +96,15 @@ module TBK
 
           def bitacora_log_file(&block)
             name = BITACORA_LOG_FILE_NAME_FORMAT % now.strftime(BITACORA_LOG_FILE_DATE_FORMAT)
-
+            puts "NOMBRE BITACORA: #{name}"
             log_file(name, &block)
           end
 
           def log_file(name, mode='a+', &block)
             path = self.directory.join(name)
-
-            File.open(path, mode, &block)
+            puts "PATH: #{path}"
+            f = File.open(path, mode, &block)
+            puts f.inspect
           end
 
         # Formats
