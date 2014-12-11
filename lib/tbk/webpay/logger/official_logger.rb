@@ -103,8 +103,9 @@ module TBK
           def log_file(name, mode='a+', &block)
             path = self.directory.join(name)
             puts "PATH: #{path}"
+            
+            puts &block
             f = File.open(path, mode, &block)
-            puts f.inspect
           end
 
         # Formats
